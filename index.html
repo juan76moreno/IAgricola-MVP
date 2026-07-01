@@ -1,81 +1,64 @@
-<!doctype html>
-<html lang="es">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>IA grícola MVP</title>
-<style>
-body{margin:0;background:#111;font-family:Arial,sans-serif;color:#071827}.phone{max-width:430px;margin:auto;min-height:100vh;background:#f6f8f7}.screen{display:none;padding:24px 22px 90px}.active{display:block}.logo{font-size:28px;font-weight:900}.logo span{color:#18a84f}h1{font-size:34px;margin:24px 0 6px}.sub{color:#667085;font-size:18px}.hero{background:linear-gradient(120deg,#053d31,#0b2a22);color:white;border-radius:24px;padding:26px;margin:24px 0}.hero h2{font-size:52px;margin:8px 0}button{border:0;border-radius:18px;padding:16px 22px;background:#18a84f;color:white;font-weight:800;font-size:16px}.card,.visit{background:white;border-radius:22px;padding:16px;margin:14px 0;box-shadow:0 6px 18px #0001}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.stat{background:white;border-radius:18px;padding:14px 8px}.stat b{display:block;font-size:26px}.visit{display:flex;gap:12px;align-items:center}.visit img{width:90px;height:90px;border-radius:16px;object-fit:cover}.tag{display:inline-block;padding:6px 9px;border-radius:9px;font-size:12px;font-weight:800}.orange{background:#fff0d6;color:#9b5a00}.blue{background:#e5f0ff;color:#1666c1}.green{background:#e4f7eb;color:#11823d}.back{background:white;color:#071827;font-size:24px}.map{background:linear-gradient(120deg,#063d31aa,#0005),url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=900&q=80');background-size:cover;color:white;border-radius:24px;padding:24px;margin:20px 0}.chat{min-height:420px}.bubble{padding:15px 17px;border-radius:20px;margin:10px 0;max-width:82%}.bot{background:#eaf7ef}.user{background:#063d31;color:white;margin-left:auto}.nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);max-width:430px;width:100%;height:76px;background:white;display:flex;justify-content:space-around;align-items:center}.nav button{background:transparent;color:#526073;padding:0}.plus{background:#18a84f!important;color:white!important;border-radius:50%;width:58px;height:58px;font-size:28px}
-</style>
-</head>
-<body>
-<main class="phone">
-
-<section id="inicio" class="screen active">
-<div class="logo"><span>IA</span>grícola</div>
-<h1>Buenos días, Carlos 👋</h1>
-<p class="sub">Jueves, 16 de mayo de 2024</p>
-<div class="hero"><p>Tu jornada de trabajo</p><h2>25%</h2><p>1 de 4 visitas completadas</p><button onclick="go('agenda')">Continuar jornada</button></div>
-<h3>Resumen de hoy</h3>
-<div class="grid"><div class="stat">🗓️<b>4</b>Visitas</div><div class="stat">⏱️<b>3</b>Seguimientos</div><div class="stat">⚠️<b>2</b>Alertas</div><div class="stat">📄<b>1</b>Informe</div></div>
-<h3>Próxima visita</h3>
-<div class="visit" onclick="go('preparar')"><img src="https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?auto=format&fit=crop&w=500&q=80"><div><h3>Finca El Progreso</h3><p>Santa Rosa, Quetzaltenango</p><p>08:00 AM · 12 km</p><span class="tag orange">Riesgo MEDIO</span> <span class="tag blue">3 seguimientos</span></div></div>
-</section>
-
-<section id="agenda" class="screen">
-<button class="back" onclick="go('inicio')">‹</button>
-<h1>Agenda</h1><p class="sub">Visitas programadas</p>
-<div class="visit" onclick="go('preparar')"><img src="https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?auto=format&fit=crop&w=500&q=80"><div><h3>Finca El Progreso</h3><p>Café · 12 ha</p><span class="tag orange">Prioridad MEDIA</span></div></div>
-<div class="visit"><img src="https://images.unsplash.com/photo-1601134467661-3d775b999c8b?auto=format&fit=crop&w=500&q=80"><div><h3>Finca San José</h3><p>Banano · 8 ha</p><span class="tag green">Prioridad BAJA</span></div></div>
-</section>
-
-<section id="preparar" class="screen">
-<button class="back" onclick="go('agenda')">‹</button>
-<h1>Preparar visita</h1><p class="sub">Finca El Progreso</p>
-<div class="card">✨ <b>IAgrícola recomienda</b><br>Enfócate en manejo de roya y fertilización.</div>
-<div class="grid"><div class="stat">🌱<b>6/6</b>Cultivo</div><div class="stat">🐞<b>4/5</b>Sanidad</div><div class="stat">💧<b>3/4</b>Suelo</div><div class="stat">📋<b>1/2</b>Infra.</div></div>
-<div class="card">⚠️ Recomendación pendiente<br>Aplicar fertilización foliar en Bloque 2</div>
-<button onclick="go('llegada')">Iniciar visita</button>
-</section>
-
-<section id="llegada" class="screen">
-<button class="back" onclick="go('preparar')">‹</button>
-<h1>Llegué a la finca</h1><p class="sub">Ubicación verificada</p>
-<div class="map"><h2>Finca El Progreso</h2><p>Precisión GPS: 8 m</p><h2>08:32 AM</h2><button>Verificar llegada</button></div>
-<div class="card">✨ IAgrícola está lista para asistirte.</div>
-<button onclick="go('asistente')">🎙️ Iniciar Asistente IA</button>
-</section>
-
-<section id="asistente" class="screen">
-<button class="back" onclick="go('llegada')">‹</button>
-<h1>Asistente IA</h1><p class="sub">Finca El Progreso · Café</p>
-<div class="chat">
-<div class="bubble bot">En la última visita se registraron 12 hectáreas de café. ¿Se mantiene esta superficie?</div>
-<div class="bubble user">Sí, se mantiene.</div>
-<div class="bubble bot">Validado. Quedan pendientes fertilización foliar, monitoreo de roya y muestreo de suelo. ¿Con cuál iniciamos?</div>
-<div class="bubble user">Con roya. En el bloque uno observo incidencia aproximada del quince por ciento.</div>
-<div class="bubble bot">Hallazgo detectado: roya en Bloque 1, incidencia 15%. ¿Severidad?</div>
+<div class="metric"><b>08:00</b><small>Hora</small></div>
+<div class="metric"><b>2h 30m</b><small>Tiempo</small></div>
+<div class="metric"><b>12 km</b><small>Distancia</small></div>
+<div class="metric"><b>Juan</b><small>Especialista</small></div>
 </div>
-<button onclick="go('resumen')">🎙️ Mantener presionado para hablar</button>
+
+<p><b>Preparación</b> <span style="float:right;color:#18a84f;font-weight:900">85%</span></p>
+<div class="progress"><i></i></div>
+
+<div class="status-grid">
+<div class="status">📋 <b>3</b><small>Seguimientos pendientes</small></div>
+<div class="status">⚠️ <b>2</b><small>Alertas activas</small></div>
+<div class="status">💡 <b>1</b><small>Recomendación pendiente</small></div>
+<div class="status">☁️ <b>Listo</b><small>Sincronización</small></div>
+</div>
+
+<p class="muted">● GPS óptimo &nbsp; ● Offline disponible &nbsp; ☀️ 24°C</p>
+<button class="primary" onclick="preparar()">Preparar visita ›</button>
+</article>
+
+<section class="prep" id="prep">
+<h2>Preparando visita</h2>
+<p class="sub">Finca El Progreso</p>
+<div class="circle" id="percent">85%</div>
+<div class="task">Descargando datos históricos <b>✓</b></div>
+<div class="task">Cargando perfil del cliente <b>✓</b></div>
+<div class="task">Descargando seguimientos <b>✓</b></div>
+<div class="task">Cargando recomendaciones <b id="last">...</b></div>
 </section>
 
-<section id="resumen" class="screen">
-<button class="back" onclick="go('asistente')">‹</button>
-<h1>Resumen de visita</h1>
-<div class="card">Datos validados: <b>127</b><br>Hallazgos: <b>5</b><br>Fotografías: <b>16</b><br>Seguimientos nuevos: <b>3</b></div>
-<div class="card">Se actualizarán Informe Técnico, Perfil Agrícola del Cliente, Perfil Técnico por Rubro y Seguimientos.</div>
-<button onclick="go('final')">Cerrar visita</button>
+<section class="prep summary" id="summary">
+<h2>✅ ¡Listo!</h2>
+<p>La visita está preparada.</p>
+<div class="status-grid">
+<div class="status"><b>12 ha</b><small>Superficie total</small></div>
+<div class="status"><b>6</b><small>Unidades productivas</small></div>
+<div class="status"><b>3</b><small>Seguimientos pendientes</small></div>
+<div class="status"><b>2</b><small>Alertas activas</small></div>
+</div>
+<h3>Alertas principales</h3>
+<div class="alert">⚠️ Roya en Bloque 1 <span class="pill orange">MEDIA</span></div>
+<div class="alert">🚨 Fertilización pendiente <span class="pill orange">ALTA</span></div>
+<button class="primary final-btn">Iniciar visita ▶</button>
+</section>
 </section>
 
-<section id="final" class="screen">
-<h1>Visita finalizada</h1><p class="sub">Productos generados correctamente</p>
-<div class="hero"><h2>✓ Listo</h2><p>La información fue validada y sincronizada.</p><button onclick="go('inicio')">Volver a inicio</button></div>
-</section>
-
-<nav class="nav"><button onclick="go('inicio')">Inicio</button><button onclick="go('agenda')">Agenda</button><button class="plus" onclick="go('preparar')">+</button><button>Clientes</button><button>Más</button></nav>
+<nav class="nav">
+<button>Inicio</button><button>Agenda</button><button class="plus">+</button><button>Clientes</button><button>Más</button>
+</nav>
 </main>
+
 <script>
-function go(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');window.scrollTo(0,0)}
+function preparar(){
+ document.getElementById('card').style.display='none';
+ document.getElementById('prep').style.display='block';
+ setTimeout(()=>{document.getElementById('last').innerText='✓'},1200);
+ setTimeout(()=>{
+   document.getElementById('prep').style.display='none';
+   document.getElementById('summary').style.display='block';
+ },2200);
+}
 </script>
 </body>
 </html>
