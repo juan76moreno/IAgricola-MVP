@@ -1,101 +1,81 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
-<meta name="theme-color" content="#18a84f"/>
-
-<title>IA grícola</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>IA grícola MVP</title>
 <style>
-:root{--green:#18a84f;--dark:#071827;--muted:#637083;--bg:#f6f8f7;--card:#fff;--soft:#eaf7ef;--warn:#fff3df;--red:#e54848;--blue:#2c7be5}
-*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-body{margin:0;background:#111;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;color:var(--dark)}
-.phone{max-width:430px;margin:0 auto;min-height:100vh;background:var(--bg);position:relative;overflow:hidden}
-.status{height:32px;display:flex;align-items:center;justify-content:space-between;padding:8px 22px 0;font-weight:700}
-.app{padding:18px 22px 92px}
-.top{display:flex;align-items:center;justify-content:space-between;margin:10px 0 20px}
-.logo{font-size:25px;font-weight:800}.logo span{color:var(--green)}
-.icon{width:42px;height:42px;border-radius:18px;background:#fff;display:inline-flex;align-items:center;justify-content:center;box-shadow:0 4px 18px #0001;margin-left:8px}
-h1{font-size:34px;margin:12px 0 4px;letter-spacing:-.8px}.sub{color:var(--muted);font-size:18px;margin-bottom:24px}
-.hero{background:linear-gradient(115deg,#073a2caa,#0b281eee),url('https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?auto=format&fit=crop&w=900&q=80');background-size:cover;background-position:center;border-radius:22px;padding:26px;color:white;box-shadow:0 10px 24px #0002}
-.hero h2{font-size:48px;margin:8px 0}.progress{height:9px;background:#ffffff33;border-radius:9px;overflow:hidden;margin:18px 0}.bar{height:100%;width:25%;background:var(--green)}
-.btn{border:0;border-radius:18px;padding:16px 20px;font-size:17px;font-weight:800;background:var(--green);color:#fff;box-shadow:0 6px 18px #18a84f55}.btn.white{background:#fff;color:#07532b}.btn.block{width:100%}.btn.dark{background:#063c30}
-.section{display:flex;align-items:center;justify-content:space-between;margin:28px 0 12px}.section h3{font-size:22px;margin:0}.link{color:var(--green);font-weight:700}
-.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.stat{background:#fff;border-radius:17px;padding:15px 10px;box-shadow:0 3px 16px #0001}.stat b{display:block;font-size:28px;margin:8px 0 4px}.stat small{font-weight:600;color:#24364a}
-.card{background:#fff;border-radius:22px;padding:14px;box-shadow:0 4px 18px #0001;margin-bottom:14px}
-.visit{display:flex;gap:12px;align-items:center}.visit img{width:90px;height:90px;border-radius:16px;object-fit:cover}.visit h3{margin:0 0 8px;font-size:20px}.meta{color:#536274;font-size:14px;line-height:1.7}
-.tag{display:inline-block;padding:7px 10px;border-radius:9px;font-weight:800;font-size:13px;margin-top:8px}.med{background:#fff0d6;color:#a45b00}.low{background:#e4f7eb;color:#11823d}.blue{background:#e5f0ff;color:#1666c1}
-.nav{position:fixed;left:50%;transform:translateX(-50%);bottom:0;max-width:430px;width:100%;height:78px;background:#fffffff2;backdrop-filter:blur(12px);border-top:1px solid #e8ecef;display:flex;justify-content:space-around;align-items:center}
-.nav button{background:none;border:0;color:#526073;font-size:12px;font-weight:650}.nav .active{color:var(--green)}.plus{width:58px;height:58px;border-radius:50%;background:var(--green)!important;color:white!important;font-size:30px!important;box-shadow:0 5px 18px #18a84f66;margin-top:-20px}
-.screen{display:none}.screen.active{display:block}.back{width:44px;height:44px;border:0;background:#fff;border-radius:14px;font-size:24px;box-shadow:0 4px 14px #0001}
-.map{background:linear-gradient(110deg,#063f32aa,#0004),url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=900&q=80');background-size:cover;background-position:center;border-radius:22px;padding:24px;color:#fff;min-height:250px}
-.checkrow{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.mini{background:#fff;border-radius:17px;padding:14px 8px;text-align:center;box-shadow:0 3px 14px #0001;font-size:13px}.mini b{display:block;font-size:19px;margin-top:7px}
-.ai{background:linear-gradient(100deg,#073d31,#063125);border-radius:22px;color:#fff;padding:18px;display:flex;align-items:center;justify-content:space-between;gap:12px}.wave{width:58px;height:58px;border-radius:50%;background:var(--green);display:flex;align-items:center;justify-content:center;font-size:27px}
-.chat{height:420px;overflow:auto;padding-bottom:10px}.bubble{max-width:84%;padding:14px 16px;border-radius:18px;margin:10px 0;line-height:1.4}.bot{background:#eef8f1}.user{background:#063c30;color:#fff;margin-left:auto}
-.record{position:fixed;left:50%;transform:translateX(-50%);bottom:88px;max-width:430px;width:100%;padding:0 22px}.record button{height:68px;border-radius:34px;font-size:18px}
-.summaryItem{display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px solid #eef1f2}.summaryItem:last-child{border-bottom:0}
+body{margin:0;background:#111;font-family:Arial,sans-serif;color:#071827}.phone{max-width:430px;margin:auto;min-height:100vh;background:#f6f8f7}.screen{display:none;padding:24px 22px 90px}.active{display:block}.logo{font-size:28px;font-weight:900}.logo span{color:#18a84f}h1{font-size:34px;margin:24px 0 6px}.sub{color:#667085;font-size:18px}.hero{background:linear-gradient(120deg,#053d31,#0b2a22);color:white;border-radius:24px;padding:26px;margin:24px 0}.hero h2{font-size:52px;margin:8px 0}button{border:0;border-radius:18px;padding:16px 22px;background:#18a84f;color:white;font-weight:800;font-size:16px}.card,.visit{background:white;border-radius:22px;padding:16px;margin:14px 0;box-shadow:0 6px 18px #0001}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.stat{background:white;border-radius:18px;padding:14px 8px}.stat b{display:block;font-size:26px}.visit{display:flex;gap:12px;align-items:center}.visit img{width:90px;height:90px;border-radius:16px;object-fit:cover}.tag{display:inline-block;padding:6px 9px;border-radius:9px;font-size:12px;font-weight:800}.orange{background:#fff0d6;color:#9b5a00}.blue{background:#e5f0ff;color:#1666c1}.green{background:#e4f7eb;color:#11823d}.back{background:white;color:#071827;font-size:24px}.map{background:linear-gradient(120deg,#063d31aa,#0005),url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=900&q=80');background-size:cover;color:white;border-radius:24px;padding:24px;margin:20px 0}.chat{min-height:420px}.bubble{padding:15px 17px;border-radius:20px;margin:10px 0;max-width:82%}.bot{background:#eaf7ef}.user{background:#063d31;color:white;margin-left:auto}.nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);max-width:430px;width:100%;height:76px;background:white;display:flex;justify-content:space-around;align-items:center}.nav button{background:transparent;color:#526073;padding:0}.plus{background:#18a84f!important;color:white!important;border-radius:50%;width:58px;height:58px;font-size:28px}
 </style>
 </head>
 <body>
-<div class="phone">
-<div class="status"><span>07:45</span><span>4G 🔋100</span></div>
-<div class="app">
-<section id="home" class="screen active">
-<div class="top"><div class="logo"><span>IA</span>grícola</div><div><span class="icon">🔔</span><span class="icon">👤</span></div></div>
-<h1>Buenos días, Carlos 👋</h1><div class="sub">Jueves, 16 de mayo de 2024</div>
-<div class="hero"><div>Tu jornada de trabajo</div><h2>25%</h2><div>1 de 4 visitas completadas</div><div class="progress"><div class="bar"></div></div><button class="btn" onclick="show('agenda')">Continuar jornada</button></div>
-<div class="section"><h3>Resumen de hoy</h3><span class="link">Ver detalle ›</span></div>
-<div class="grid"><div class="stat">🗓️<b>4</b><small>Visitas</small></div><div class="stat">⏱️<b>3</b><small>Seguimientos</small></div><div class="stat">⚠️<b>2</b><small>Alertas</small></div><div class="stat">📄<b>1</b><small>Informe</small></div></div>
-<div class="section"><h3>Próxima visita</h3></div>
-<div class="card visit" onclick="show('prepare')"><img src="https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?auto=format&fit=crop&w=300&q=80"><div><h3>Finca El Progreso</h3><div class="meta">📍 Santa Rosa, Quetzaltenango<br>🕘 08:00 AM · 12 km</div><span class="tag med">Riesgo MEDIO</span> <span class="tag blue">3 seguimientos</span></div><b>›</b></div>
-</section>
-<section id="agenda" class="screen">
-<div class="top"><div class="logo"><span>IA</span>grícola</div><div><span class="icon">🔔</span></div></div>
-<h1>Agenda</h1><div class="sub">Jueves, 16 de mayo de 2024</div>
-<div class="grid"><div class="stat">🗓️<b>4</b><small>Visitas</small></div><div class="stat">⏱️<b>6h</b><small>Tiempo</small></div><div class="stat">🛣️<b>78</b><small>km</small></div><div class="stat">⚠️<b>2</b><small>Alertas</small></div></div>
-<div class="section"><h3>Visitas programadas</h3><span class="link">Hora ˅</span></div>
-<div class="card visit" onclick="show('prepare')"><img src="https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?auto=format&fit=crop&w=300&q=80"><div><h3>Finca El Progreso</h3><div class="meta">📍 Santa Rosa<br>☕ Café · 12 ha</div><span class="tag med">Prioridad MEDIA</span></div><b>›</b></div>
-<div class="card visit"><img src="https://images.unsplash.com/photo-1601134467661-3d775b999c8b?auto=format&fit=crop&w=300&q=80"><div><h3>Finca San José</h3><div class="meta">📍 Zunil<br>🍌 Banano · 8 ha</div><span class="tag low">Prioridad BAJA</span></div><b>›</b></div>
-</section>
-<section id="prepare" class="screen">
-<button class="back" onclick="show('agenda')">‹</button><h1>Preparar visita</h1><div class="sub">Finca El Progreso</div>
-<div class="card visit"><img src="https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?auto=format&fit=crop&w=300&q=80"><div><div class="meta">📍 Santa Rosa, Quetzaltenango<br>📅 16 mayo 2024<br>🕘 08:00 AM<br>👤 Juan Pérez López<br>☕ Cultivo principal: Café</div><span class="tag med">Prioridad MEDIA</span> <span class="tag low">Riesgo MEDIO</span></div></div>
-<div class="card" style="background:#eaf7ef">✨ <b>IAgrícola recomienda</b><br><span class="meta">Enfócate en manejo de roya y fertilización.</span></div>
-<div class="section"><h3>Checklist sugerido</h3><span class="link">Ver todo</span></div>
-<div class="checkrow"><div class="mini">🌱<b>6/6</b>Cultivo</div><div class="mini">🐞<b>4/5</b>Sanidad</div><div class="mini">💧<b>3/4</b>Suelo</div><div class="mini">📋<b>1/2</b>Infra.</div></div>
-<div class="section"><h3>Pendientes</h3></div><div class="card">⚠️ Recomendación pendiente<br><span class="meta">Aplicar fertilización foliar en Bloque 2</span></div>
-<button class="btn block" onclick="show('arrive')">Iniciar visita · al llegar a la finca</button>
-</section>
-<section id="arrive" class="screen">
-<button class="back" onclick="show('prepare')">‹</button><h1 style="text-align:center">Llegué a la finca</h1><div class="sub" style="text-align:center">Ubicación verificada</div>
-<div class="map"><h2>📍 Finca El Progreso</h2><p>Santa Rosa, Quetzaltenango</p><p>✅ Precisión: 8 m</p><h2>08:32 AM</h2><button class="btn">Verificar llegada</button></div>
-<div class="card" style="background:#eaf7ef">✨ <b>IAgrícola está lista para asistirte</b><br><span class="meta">Iniciemos la evaluación técnica.</span></div>
-<div class="section"><h3>Antes de comenzar</h3></div><div class="checkrow"><div class="mini">📋<b>6/6</b>Listo</div><div class="mini">📷<b>0</b>Fotos</div><div class="mini">📄<b>3</b>Docs</div><div class="mini">📡<b>GPS</b>Excelente</div></div>
-<div class="section"><h3>¿Qué deseas hacer ahora?</h3></div>
-<div class="ai"><div class="wave">🎙️</div><div><b>Iniciar Asistente IA</b><br><small>Conversación por voz para evaluación técnica</small></div><button class="btn white" onclick="show('assistant')">Iniciar ›</button></div>
-</section>
-<section id="assistant" class="screen">
-<button class="back" onclick="show('arrive')">‹</button><h1>Asistente IA</h1><div class="sub">Finca El Progreso · Café</div>
-<div class="chat"><div class="bubble bot"><b>IAgrícola</b><br>En la última visita se registraron 12 hectáreas de café. ¿Se mantiene esta superficie?</div><div class="bubble user">Sí, se mantiene.</div><div class="bubble bot">Validado. Quedan pendientes: fertilización foliar, monitoreo de roya y muestreo de suelo. ¿Con cuál iniciamos?</div><div class="bubble user">Con roya. En el bloque uno observo incidencia aproximada del quince por ciento.</div><div class="bubble bot">Hallazgo detectado: roya en Bloque 1, incidencia 15%. ¿Severidad?</div></div>
-<div class="record"><button class="btn block dark" onclick="show('summary')">🎙️ Mantener presionado para hablar</button></div>
-</section>
-<section id="summary" class="screen">
-<button class="back" onclick="show('assistant')">‹</button><h1>Resumen de visita</h1><div class="sub">Validación antes de cerrar</div>
-<div class="card"><div class="summaryItem"><span>Datos validados</span><b>127</b></div><div class="summaryItem"><span>Datos modificados</span><b>8</b></div><div class="summaryItem"><span>Hallazgos técnicos</span><b>5</b></div><div class="summaryItem"><span>Fotografías</span><b>16</b></div><div class="summaryItem"><span>Seguimientos nuevos</span><b>3</b></div></div>
-<div class="card" style="background:#eaf7ef"><b>Productos que se actualizarán</b><br><br>✓ Informe Técnico<br>✓ Perfil Agrícola del Cliente<br>✓ Perfil Técnico por Rubro<br>✓ Seguimientos<br>✓ Dashboard</div>
-<button class="btn block" onclick="show('done')">Cerrar visita y generar productos</button>
-</section>
-<section id="done" class="screen">
-<h1>Visita finalizada</h1><div class="sub">Productos generados correctamente</div>
-<div class="hero"><h2>✓ Listo</h2><p>La información fue validada y sincronizada.</p><button class="btn white" onclick="show('home')">Volver a inicio</button></div>
-<div class="card"><b>Informe Técnico</b><br><span class="meta">Generado · Pendiente de aprobación</span></div><div class="card"><b>Seguimientos</b><br><span class="meta">3 nuevos seguimientos creados</span></div>
-</section>
-</div>
-<nav class="nav"><button class="active" onclick="show('home')">⌂<br>Inicio</button><button onclick="show('agenda')">▣<br>Agenda</button><button class="plus" onclick="show('prepare')">+</button><button>♙<br>Clientes</button><button>•••<br>Más</button></nav>
-</div>
-<script>
-function show(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');window.scrollTo(0,0)}
+<main class="phone">
 
+<section id="inicio" class="screen active">
+<div class="logo"><span>IA</span>grícola</div>
+<h1>Buenos días, Carlos 👋</h1>
+<p class="sub">Jueves, 16 de mayo de 2024</p>
+<div class="hero"><p>Tu jornada de trabajo</p><h2>25%</h2><p>1 de 4 visitas completadas</p><button onclick="go('agenda')">Continuar jornada</button></div>
+<h3>Resumen de hoy</h3>
+<div class="grid"><div class="stat">🗓️<b>4</b>Visitas</div><div class="stat">⏱️<b>3</b>Seguimientos</div><div class="stat">⚠️<b>2</b>Alertas</div><div class="stat">📄<b>1</b>Informe</div></div>
+<h3>Próxima visita</h3>
+<div class="visit" onclick="go('preparar')"><img src="https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?auto=format&fit=crop&w=500&q=80"><div><h3>Finca El Progreso</h3><p>Santa Rosa, Quetzaltenango</p><p>08:00 AM · 12 km</p><span class="tag orange">Riesgo MEDIO</span> <span class="tag blue">3 seguimientos</span></div></div>
+</section>
+
+<section id="agenda" class="screen">
+<button class="back" onclick="go('inicio')">‹</button>
+<h1>Agenda</h1><p class="sub">Visitas programadas</p>
+<div class="visit" onclick="go('preparar')"><img src="https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?auto=format&fit=crop&w=500&q=80"><div><h3>Finca El Progreso</h3><p>Café · 12 ha</p><span class="tag orange">Prioridad MEDIA</span></div></div>
+<div class="visit"><img src="https://images.unsplash.com/photo-1601134467661-3d775b999c8b?auto=format&fit=crop&w=500&q=80"><div><h3>Finca San José</h3><p>Banano · 8 ha</p><span class="tag green">Prioridad BAJA</span></div></div>
+</section>
+
+<section id="preparar" class="screen">
+<button class="back" onclick="go('agenda')">‹</button>
+<h1>Preparar visita</h1><p class="sub">Finca El Progreso</p>
+<div class="card">✨ <b>IAgrícola recomienda</b><br>Enfócate en manejo de roya y fertilización.</div>
+<div class="grid"><div class="stat">🌱<b>6/6</b>Cultivo</div><div class="stat">🐞<b>4/5</b>Sanidad</div><div class="stat">💧<b>3/4</b>Suelo</div><div class="stat">📋<b>1/2</b>Infra.</div></div>
+<div class="card">⚠️ Recomendación pendiente<br>Aplicar fertilización foliar en Bloque 2</div>
+<button onclick="go('llegada')">Iniciar visita</button>
+</section>
+
+<section id="llegada" class="screen">
+<button class="back" onclick="go('preparar')">‹</button>
+<h1>Llegué a la finca</h1><p class="sub">Ubicación verificada</p>
+<div class="map"><h2>Finca El Progreso</h2><p>Precisión GPS: 8 m</p><h2>08:32 AM</h2><button>Verificar llegada</button></div>
+<div class="card">✨ IAgrícola está lista para asistirte.</div>
+<button onclick="go('asistente')">🎙️ Iniciar Asistente IA</button>
+</section>
+
+<section id="asistente" class="screen">
+<button class="back" onclick="go('llegada')">‹</button>
+<h1>Asistente IA</h1><p class="sub">Finca El Progreso · Café</p>
+<div class="chat">
+<div class="bubble bot">En la última visita se registraron 12 hectáreas de café. ¿Se mantiene esta superficie?</div>
+<div class="bubble user">Sí, se mantiene.</div>
+<div class="bubble bot">Validado. Quedan pendientes fertilización foliar, monitoreo de roya y muestreo de suelo. ¿Con cuál iniciamos?</div>
+<div class="bubble user">Con roya. En el bloque uno observo incidencia aproximada del quince por ciento.</div>
+<div class="bubble bot">Hallazgo detectado: roya en Bloque 1, incidencia 15%. ¿Severidad?</div>
+</div>
+<button onclick="go('resumen')">🎙️ Mantener presionado para hablar</button>
+</section>
+
+<section id="resumen" class="screen">
+<button class="back" onclick="go('asistente')">‹</button>
+<h1>Resumen de visita</h1>
+<div class="card">Datos validados: <b>127</b><br>Hallazgos: <b>5</b><br>Fotografías: <b>16</b><br>Seguimientos nuevos: <b>3</b></div>
+<div class="card">Se actualizarán Informe Técnico, Perfil Agrícola del Cliente, Perfil Técnico por Rubro y Seguimientos.</div>
+<button onclick="go('final')">Cerrar visita</button>
+</section>
+
+<section id="final" class="screen">
+<h1>Visita finalizada</h1><p class="sub">Productos generados correctamente</p>
+<div class="hero"><h2>✓ Listo</h2><p>La información fue validada y sincronizada.</p><button onclick="go('inicio')">Volver a inicio</button></div>
+</section>
+
+<nav class="nav"><button onclick="go('inicio')">Inicio</button><button onclick="go('agenda')">Agenda</button><button class="plus" onclick="go('preparar')">+</button><button>Clientes</button><button>Más</button></nav>
+</main>
+<script>
+function go(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');window.scrollTo(0,0)}
 </script>
 </body>
 </html>
