@@ -3,97 +3,131 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>IA grícola MVP</title>
+<title>IA grícola MVP v0.2</title>
 <style>
-body{margin:0;background:#101418;font-family:Arial,sans-serif;color:#071827}.phone{max-width:430px;margin:auto;min-height:100vh;background:#f6f8f7}.screen{padding:24px 22px 96px}.logo{font-size:28px;font-weight:900}.logo span{color:#18a84f}h1{font-size:34px;margin:24px 0 6px}.sub{color:#667085;font-size:18px}.tabs{display:flex;gap:10px;margin:20px 0}.tabs button{background:white;color:#071827}.tabs .on{background:#18a84f;color:white}button{border:0;border-radius:18px;padding:15px 20px;background:#18a84f;color:white;font-weight:800;font-size:16px}.visit-card{background:white;border-radius:26px;padding:16px;box-shadow:0 8px 24px #0002;margin-top:20px}.visit-card img{width:100%;height:170px;object-fit:cover;border-radius:22px}.row{display:flex;justify-content:space-between;gap:10px}.pill{padding:7px 10px;border-radius:10px;font-size:12px;font-weight:900}.orange{background:#fff0d6;color:#9b5a00}.green{background:#e4f7eb;color:#11823d}.blue{background:#e5f0ff;color:#1666c1}.muted{color:#667085}.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:16px 0}.metric{background:#f7faf8;border-radius:16px;padding:12px 8px;text-align:center}.metric b{display:block;font-size:18px}.progress{height:9px;background:#e5ece8;border-radius:99px;overflow:hidden}.progress i{display:block;width:85%;height:100%;background:#18a84f}.status-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.status{background:#f7faf8;border-radius:16px;padding:13px}.status b{display:block}.primary{width:100%;margin-top:18px}.prep{display:none;background:white;border-radius:26px;padding:24px;margin-top:20px;box-shadow:0 8px 24px #0002;text-align:center}.circle{width:135px;height:135px;border:12px solid #d8f2e1;border-top-color:#18a84f;border-radius:50%;margin:10px auto;display:grid;place-items:center;font-size:32px;font-weight:900}.task{display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px solid #eef1f2}.summary{display:none}.alert{background:#fff4ed;border-radius:16px;padding:13px;margin:10px 0}.final-btn{margin-top:18px}.nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);max-width:430px;width:100%;height:78px;background:white;display:flex;justify-content:space-around;align-items:center}.nav button{background:transparent;color:#526073;padding:0}.plus{background:#18a84f!important;color:white!important;border-radius:50%;width:58px;height:58px;font-size:28px}
+*{box-sizing:border-box}
+body{margin:0;background:#0f1412;font-family:Arial,sans-serif;color:#071827}
+.app{max-width:430px;margin:auto;min-height:100vh;background:#f6f8f7;padding:24px 20px 92px}
+.logo{font-size:27px;font-weight:900}.logo span{color:#18a84f}
+.top{display:flex;justify-content:space-between;align-items:center}
+.icon{background:white;border-radius:16px;padding:12px;box-shadow:0 4px 14px #0001}
+h1{font-size:34px;margin:26px 0 6px}.sub{color:#667085;font-size:17px}
+.summary{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:24px 0}
+.box{background:white;border-radius:18px;padding:13px 8px;text-align:center;box-shadow:0 5px 18px #0001}
+.box b{display:block;font-size:24px}.box small{color:#667085;font-weight:700}
+.card{background:white;border-radius:28px;padding:16px;box-shadow:0 10px 28px #0002;margin-top:18px}
+.card img{width:100%;height:165px;object-fit:cover;border-radius:22px}
+.row{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+.muted{color:#667085}
+.pill{padding:7px 10px;border-radius:10px;font-size:12px;font-weight:900}
+.orange{background:#fff0d6;color:#9b5a00}.green{background:#e4f7eb;color:#11823d}.blue{background:#e5f0ff;color:#1666c1}
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin:16px 0}
+.metric{background:#f7faf8;border-radius:16px;padding:12px 6px;text-align:center}
+.metric b{display:block;font-size:16px}
+.progress{height:9px;background:#e5ece8;border-radius:99px;overflow:hidden}.progress i{display:block;width:85%;height:100%;background:#18a84f}
+.status{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:14px}
+.item{background:#f7faf8;border-radius:16px;padding:13px}.item b{display:block;font-size:20px}
+button{border:0;border-radius:18px;background:#18a84f;color:white;font-size:17px;font-weight:900;padding:16px 18px;width:100%;margin-top:18px}
+.prep{display:none;text-align:center}.circle{width:138px;height:138px;margin:24px auto;border:12px solid #d8f2e1;border-top-color:#18a84f;border-radius:50%;display:grid;place-items:center;font-size:34px;font-weight:900}
+.task{display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px solid #eef1f2}
+.alert{background:#fff4ed;border-radius:16px;padding:14px;margin:10px 0}
+.nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);max-width:430px;width:100%;height:78px;background:white;display:flex;justify-content:space-around;align-items:center;border-top:1px solid #e6ece9}
+.nav span{font-size:13px;color:#526073;font-weight:800}.plus{background:#18a84f;color:white;border-radius:50%;width:58px;height:58px;display:grid;place-items:center;font-size:30px;margin-top:-22px}
 </style>
 </head>
 <body>
-<main class="phone">
-<section class="screen">
-<div class="logo"><span>IA</span>grícola</div>
-<h1>Agenda</h1>
-<p class="sub">Jueves, 16 de mayo de 2024</p>
+<main class="app">
 
-<div class="tabs">
-<button class="on">Hoy 4</button>
-<button>Semana 12</button>
-<button>Todas 28</button>
-</div>
+<section id="agenda">
+  <div class="top">
+    <div class="logo"><span>IA</span>grícola</div>
+    <div><span class="icon">🔍</span> <span class="icon">🔔</span></div>
+  </div>
 
-<article class="visit-card" id="card">
-<img src="https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?auto=format&fit=crop&w=800&q=80">
-<div class="row">
-<div>
-<h2>Finca El Progreso</h2>
-<p class="muted">Cliente: Carlos Hernández</p>
-<p>☕ Café Arábica</p>
-<p>📍 Santa Rosa, Quetzaltenango</p>
-</div>
-<span class="pill orange">MEDIA</span>
-</div>
+  <h1>Agenda Inteligente</h1>
+  <p class="sub">Jueves, 16 de mayo de 2024</p>
 
-<div class="metrics">
-<div class="metric"><b>08:00</b><small>Hora</small></div>
-<div class="metric"><b>2h 30m</b><small>Tiempo</small></div>
-<div class="metric"><b>12 km</b><small>Distancia</small></div>
-<div class="metric"><b>Juan</b><small>Especialista</small></div>
-</div>
+  <div class="summary">
+    <div class="box">🗓️<b>4</b><small>Visitas</small></div>
+    <div class="box">⏱️<b>6h</b><small>Tiempo</small></div>
+    <div class="box">🛣️<b>78</b><small>km</small></div>
+    <div class="box">⚠️<b>2</b><small>Alertas</small></div>
+  </div>
 
-<p><b>Preparación</b> <span style="float:right;color:#18a84f;font-weight:900">85%</span></p>
-<div class="progress"><i></i></div>
+  <article class="card" id="card">
+    <img src="https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?auto=format&fit=crop&w=900&q=80">
+    <div class="row">
+      <div>
+        <h2>Finca El Progreso</h2>
+        <p class="muted">Cliente: Carlos Hernández</p>
+        <p>☕ Café Arábica</p>
+        <p>📍 Santa Rosa, Quetzaltenango</p>
+      </div>
+      <span class="pill orange">MEDIA</span>
+    </div>
 
-<div class="status-grid">
-<div class="status">📋 <b>3</b><small>Seguimientos pendientes</small></div>
-<div class="status">⚠️ <b>2</b><small>Alertas activas</small></div>
-<div class="status">💡 <b>1</b><small>Recomendación pendiente</small></div>
-<div class="status">☁️ <b>Listo</b><small>Sincronización</small></div>
-</div>
+    <div class="metrics">
+      <div class="metric"><b>08:00</b><small>Hora</small></div>
+      <div class="metric"><b>2h 30m</b><small>Tiempo</small></div>
+      <div class="metric"><b>12 km</b><small>Distancia</small></div>
+      <div class="metric"><b>Juan</b><small>Técnico</small></div>
+    </div>
 
-<p class="muted">● GPS óptimo &nbsp; ● Offline disponible &nbsp; ☀️ 24°C</p>
-<button class="primary" onclick="preparar()">Preparar visita ›</button>
-</article>
+    <p><b>Preparación</b> <span style="float:right;color:#18a84f;font-weight:900">85%</span></p>
+    <div class="progress"><i></i></div>
 
-<section class="prep" id="prep">
-<h2>Preparando visita</h2>
-<p class="sub">Finca El Progreso</p>
-<div class="circle" id="percent">85%</div>
-<div class="task">Descargando datos históricos <b>✓</b></div>
-<div class="task">Cargando perfil del cliente <b>✓</b></div>
-<div class="task">Descargando seguimientos <b>✓</b></div>
-<div class="task">Cargando recomendaciones <b id="last">...</b></div>
+    <div class="status">
+      <div class="item">📋 <b>3</b><small>Seguimientos</small></div>
+      <div class="item">⚠️ <b>2</b><small>Alertas</small></div>
+      <div class="item">💡 <b>1</b><small>Recomendación</small></div>
+      <div class="item">☁️ <b>Listo</b><small>Offline</small></div>
+    </div>
+
+    <p class="muted">● GPS óptimo · ● Offline disponible · ☀️ 24°C</p>
+    <button onclick="preparar()">Preparar visita ›</button>
+  </article>
 </section>
 
-<section class="prep summary" id="summary">
-<h2>✅ ¡Listo!</h2>
-<p>La visita está preparada.</p>
-<div class="status-grid">
-<div class="status"><b>12 ha</b><small>Superficie total</small></div>
-<div class="status"><b>6</b><small>Unidades productivas</small></div>
-<div class="status"><b>3</b><small>Seguimientos pendientes</small></div>
-<div class="status"><b>2</b><small>Alertas activas</small></div>
-</div>
-<h3>Alertas principales</h3>
-<div class="alert">⚠️ Roya en Bloque 1 <span class="pill orange">MEDIA</span></div>
-<div class="alert">🚨 Fertilización pendiente <span class="pill orange">ALTA</span></div>
-<button class="primary final-btn">Iniciar visita ▶</button>
+<section class="card prep" id="prep">
+  <h2>Preparando visita</h2>
+  <p class="sub">Finca El Progreso</p>
+  <div class="circle">85%</div>
+  <div class="task">Expediente técnico <b>✓</b></div>
+  <div class="task">Perfil del cliente <b>✓</b></div>
+  <div class="task">Historial y fotografías <b>✓</b></div>
+  <div class="task">Seguimientos pendientes <b>✓</b></div>
+  <div class="task">Costos y recomendaciones <b id="last">...</b></div>
 </section>
+
+<section class="card prep" id="ready">
+  <h2>✅ Visita preparada</h2>
+  <p class="sub">Resumen ejecutivo listo</p>
+  <div class="status">
+    <div class="item"><b>12 ha</b><small>Superficie</small></div>
+    <div class="item"><b>6</b><small>Unidades</small></div>
+    <div class="item"><b>3</b><small>Seguimientos</small></div>
+    <div class="item"><b>2</b><small>Alertas</small></div>
+  </div>
+  <div class="alert">⚠️ Roya en Bloque 1 <span class="pill orange">MEDIA</span></div>
+  <div class="alert">🚨 Fertilización pendiente <span class="pill orange">ALTA</span></div>
+  <button>Iniciar visita ▶</button>
 </section>
 
 <nav class="nav">
-<button>Inicio</button><button>Agenda</button><button class="plus">+</button><button>Clientes</button><button>Más</button>
+  <span>Inicio</span><span>Agenda</span><div class="plus">+</div><span>Clientes</span><span>Más</span>
 </nav>
+
 </main>
 
 <script>
 function preparar(){
- document.getElementById('card').style.display='none';
- document.getElementById('prep').style.display='block';
- setTimeout(()=>{document.getElementById('last').innerText='✓'},1200);
- setTimeout(()=>{
-   document.getElementById('prep').style.display='none';
-   document.getElementById('summary').style.display='block';
- },2200);
+  document.getElementById('card').style.display='none';
+  document.getElementById('prep').style.display='block';
+  setTimeout(()=>document.getElementById('last').innerText='✓',1000);
+  setTimeout(()=>{
+    document.getElementById('prep').style.display='none';
+    document.getElementById('ready').style.display='block';
+  },2200);
 }
 </script>
 </body>
